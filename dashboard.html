@@ -1,0 +1,119 @@
+{% extends "layout.html" %}
+
+{% block main_content %}
+
+<h1>Dashboard Results</h1>
+
+  <!-- TABLES User Spending Breakdown by week/ month/ year -->
+  <div class="container-fluid bg-1 text-center">
+    <div class="row">
+<!-- This is where the 12 columns are divided into 3 groups of 4 -->
+      <div class="col-sm-3">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th><h4>Your annual spending</h4></th>
+              <th>GBP</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for key, value in annual.items() %}
+          <tr>
+            <td>{{ key.title() }}</td>
+            <td>&pound;{{ value }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+        </table>
+      </div>
+      <div class="col-sm-3">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th><h4>Your weekly spending</h4></th>
+              <th>GBP</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for key, value in weekly.items() %}
+          <tr>
+            <td>{{ key.title() }}</td>
+            <td>&pound;{{ value }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+        </table>
+      </div>
+      <div class="col-sm-3">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th><h4>Your monthly spending</h4></th>
+              <th>GBP</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for key, value in monthly.items() %}
+          <tr>
+            <td>{{ key.title() }}</td>
+            <td>&pound;{{ value }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+        </table>
+      </div>
+      <div class="col-sm-3">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Average UK Spending (pcm)
+                <br> {{ salary_data }}</th>
+              <th>GBP</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for key, value in average.items() %}
+          <tr>
+            <td>{{ key.title() }}</td>
+            <td>&pound;{{ value }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid bg-1 text-center">
+    <div class="row">
+<!-- This is where the 12 columns are divided into 3 groups of 4 -->
+      <div class="col-sm-4">
+        <h4>Pie Chart showing your spending breakdown</h4>
+        <div class="dashboard-img">
+          <img src="{{ url_for('static', filename='images/piechart.png') }}" alt="spending pie chart">
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <h4>Stacked Bar Chart showing your spending compared to average UK household spending</h4>
+        <div class="dashboard-img">
+          <img src="{{ url_for('static', filename='images/barstack.png') }}" alt="stacked bar chart">
+        </div>
+      </div>
+      <div class="col-sm-1">
+        </div>
+      <div class="col-sm-2">
+        <h4>Key:</h4>
+        <div class="dashboard-img">
+          <img src="{{ url_for('static', filename='images/legend.jpg') }}" height="200" width="150" alt="Legend">
+        </div>
+      </div>
+      <div class="col-sm-1">
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+
+
+{% endblock %}
